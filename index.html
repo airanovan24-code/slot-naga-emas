@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slot Naga Emas</title>
+<style>
+body {
+  background: #100d18;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+h1 { color: gold; }
+.kartu {
+  background: #241b2b;
+  border: 2px solid gold;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 350px;
+}
+#slot {
+  font-size: 48px;
+  margin: 25px 0;
+}
+button {
+  background: gold;
+  color: black;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>🐉 SLOT NAGA EMAS</h1>
+
+<div class="kartu">
+  <h3>Saldo Koin Virtual</h3>
+  <h2><span id="saldo">1000</span> 🪙</h2>
+  <div id="slot">🐉 💎 👑</div>
+  <button onclick="spin()">SPIN</button>
+  <p id="pesan">Selamat datang!</p>
+</div>
+
+<script>
+let saldo = 1000;
+
+function spin() {
+  if (saldo < 10) {
+    document.getElementById("pesan").textContent =
+      "Koin habis!";
+    return;
+  }
+
+  saldo -= 10;
+
+  const simbol = ["🐉", "💎", "👑", "⭐", "🍀"];
+  const hasil = [];
+
+  for (let i = 0; i < 3; i++) {
+    hasil.push(simbol[Math.floor(Math.random() * simbol.length)]);
+  }
+
+  document.getElementById("slot").textContent = hasil.join(" ");
+  
+  if (hasil[0] === hasil[1] && hasil[1] === hasil[2]) {
+    saldo += 100;
+    document.getElementById("pesan").textContent =
+      "🎉 JACKPOT! +100 koin virtual!";
+  } else if (
+    hasil[0] === hasil[1] ||
+    hasil[1] === hasil[2] ||
+    hasil[0] === hasil[2]
+  ) {
+    saldo += 20;
+    document.getElementById("pesan").textContent =
+      "✨ Kamu mendapat +20 koin virtual!";
+  } else {
+    document.getElementById("pesan").textContent =
+      "Coba lagi!";
+  }
+
+  document.getElementById("saldo").textContent = saldo;
+}
+</script>
+
+</body>
+  </html>
